@@ -1,5 +1,4 @@
 import asyncio
-from unicodedata import name
 
 from fastapi import FastAPI
 
