@@ -1,12 +1,28 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+
+from pydantic import AnyUrl, BaseModel, Field, EmailStr
+from typing import List, Dict, Optional, Annotated
 
 
+#TODO Request body + Validation
 class Item(BaseModel):
     name: str
     description: str | None = None
-    price: float
-    tax: float | None = None
+    price: float # required field
+    tax: float | None = None # option field
+
+
+#Todo Request body + Advance validation
+# class Item(BaseModel):
+#     name: Annotated[str, Field(max_length=30, title="Name of the item", description="Name must be less than 30 characters")]
+#     email: EmailStr
+#     link_url: AnyUrl
+#     price: float = Field(gt=0, strict=True)
+#     age: int = Field(gt=0, lt=70, title="Age", description="Age must be between 0 and 70")
+#     tax: float | None = None
+#     category: Annotated[Optional[List[str]], Field(default=None, max_length=100)]
+#     dic_desc: Dict[str, str]
+    
 
 app = FastAPI()
 
