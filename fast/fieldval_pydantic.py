@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, model_validator
 
 
 #TODO Request body + Validation
@@ -10,6 +10,7 @@ class User(BaseModel):
     email: str | None = None
     price: float | None = None
 
+    #* Field validation
     @field_validator("age", mode="before") # by defualt mode is after
     @classmethod
     def age_must_be_positive(cls, v):
@@ -26,6 +27,13 @@ class User(BaseModel):
         if given_domain not in valid_domains:
             raise ValueError("Email must be from a valid domain")
         return value
+
+    #* Model validation
+    @model_validator(mode="after")
+    def check_price(cls, model):
+        if model.price is not None and model.age > 17:
+            raise ValueError("Price can only be set for users under 18")
+        return model
 
 app = FastAPI()
 
