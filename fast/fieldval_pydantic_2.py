@@ -3,6 +3,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel, field_validator, model_validator
 
 
+# type coercion: before and after validation
+
 #TODO Request body + Validation
 class User(BaseModel):
     name: str

@@ -22,7 +22,7 @@ async def create_item(name: str):
 
 # TODO response_model
 @app.post("/items/", response_model=Item)
-async def create_item(item: Item) -> Any:
+async def create_item(item: Item) -> Any: #return type of Any is used to avoid type checking errors but it optionally can be used to specify the return type of the function
     return item
 
 

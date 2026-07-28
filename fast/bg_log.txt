@@ -1,0 +1,8 @@
+notification for abc@gmail.com: some notification
+Name: xyz
+
+found query: abcd
+
+
+message to xyz@gmail.com
+
