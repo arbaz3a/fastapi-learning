@@ -4,5 +4,7 @@ version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi[standard]>=0.139.2",
+    "pwdlib[argon2]>=0.3.0",
+    "pyjwt>=2.13.0",
     "websockets>=16.1.1",
 ]
